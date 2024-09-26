@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amber Dialogue</title>
+    <link rel="stylesheet" href="amber01.css">
+</head>
+<body>
+    <div class="container">
+        <div class="background"></div>
+
+        <div class="character">
+            <img id="character-img" src="https://media.discordapp.net/attachments/1283415878091673602/1288719380976238644/BackgroundEraser_20240926_114846065-removebg.png?ex=66f634f3&is=66f4e373&hm=ffafb4f5c188d24d706f2bcad4900ac0fc8379c2d1a3453204c07be9fb466b97&=&format=webp&quality=lossless&width=626&height=625" style=width:autopx;> 
+        </div>
+
+        <div class="text-box">
+            <div id="dialogue">
+                <p>
+                    "Tch... I didn’t ask for this." 
+                    <em>Amber crosses her arms, her gaze cold and distant, her eyes narrowing slightly as she shifts her weight.</em> 
+                    "Do you really think this is going to work? You and me, just because someone else decided it?" 
+                    <em>She scoffs softly, her fingers digging into her arms as if bracing against an unseen force, her expression hardening.</em>
+                </p>
+            </div>
+            <button onclick="nextText()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const dialogues = [
+            `"Tch... I didn’t ask for this." <em>Amber crosses her arms, her gaze cold and distant, her eyes narrowing slightly as she shifts her weight.</em> "Do you really think this is going to work? You and me, just because someone else decided it?" <em>She scoffs softly, her fingers digging into her arms as if bracing against an unseen force, her expression hardening.</em>`,
+            `"I don’t even know you." <em>She bites the inside of her cheek, her jaw tightening as she turns away from you, eyes flickering with frustration.</em> "But here we are, stuck in this... whatever it is." <em>Her voice falters, the edge softening as she exhales deeply, her hands loosening their grip as a flicker of resignation appears in her eyes.</em>`,
+            `"I don’t have to like it, but I guess we’re both trapped, aren’t we?" <em>She mutters, her gaze dropping to the floor, her voice quieter now, almost as if she’s speaking more to herself than to you.</em>`
+        ];
+        
+        let currentIndex = 0;
+
+        function nextText() {
+            currentIndex++;
+            if (currentIndex >= dialogues.length) {
+                currentIndex = 0;
+            }
+            document.getElementById('dialogue').innerHTML = `<p>${dialogues[currentIndex]}</p>`;
+            document.getElementById('character-img').classList.add('expand');
+            setTimeout(() => document.getElementById('character-img').classList.remove('expand'), 500);
+        }
+    </script>
+</body>
+</html>
